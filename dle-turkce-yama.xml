@@ -6,7 +6,7 @@
 	<version>18.0</version>
 	<dleversion>18.0</dleversion>
 	<versioncompare>greater</versioncompare>
-	<upgradeurl>https://raw.githubusercontent.com/dlenettr/dle-turkce-yama/master/release.json</upgradeurl>
+	<upgradeurl>https://raw.githubusercontent.com/mt-mobil-lab/dle-tr-dil/master/release.json</upgradeurl>
 	<filedelete>0</filedelete>
 	<needplugin></needplugin>
 	<mysqlinstall><![CDATA[]]></mysqlinstall>
