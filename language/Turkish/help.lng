@@ -1,0 +1,112 @@
+<?php
+
+$help_sections['title']['templates'] = "Şablonlar";
+$help_sections['body']['templates'] = <<<HTML
+Şablonlar, haberlerin görünümünü değiştirmek için kullanılır. Haberlerin farklı bölümlerini görüntülemek için kullanılan şablonların çeşitli kısımlarını değiştirebilirsiniz. Örneğin, "Makale Açıklaması", aktif haberlerin görünümünü değiştirmek için, "Tam Makale" tam makalenin görünümünü değiştirmek için, "Yorumlar" yorumların görünümünü değiştirmek için kullanılır, vb.<br><br>
+Şablonunuzu düzenlerken çeşitli yapılarını değiştirmek için HTML kullanabilirsiniz. Haber başlığı, yazar adı, tarih vb. için bir yer belirlemek amacıyla şablonlarınıza bazı özel semboller eklemeniz gerekir. Şablonun her bölümü, belirli bir tanımlamaya karşılık gelir.<br>
+Değişkenlerin değerlerini şablon düzenleme sayfasında görebilirsiniz. Bu sayfaya erişmek için şablon kısmının adına tıklayın. Örneğin: <b>{title}</b> makalenin başlığıdır, <b>{author}</b> makalenin yazarıdır, vb.<br><br>
+Birden fazla şablon kullanabilirsiniz.
+HTML;
+
+$help_sections['title']['xfields'] = "Ekstra Alanlar";
+$help_sections['body']['xfields'] = <<<HTML
+Ekstra alanlar, <b>Ayarlar</b> &gt; <b>Ekstra Alanlar</b> üzerinden etkinleştirilebilir. Bu özellik, örneğin, makaleye orijinal kaynağa ait bir referans yayınlamak için faydalıdır.<br>
+Yeni bir alan eklemek için "Alan Ekle" butonuna tıklayın. Sonraki sayfada, alan için benzersiz bir ad, açıklama ve varsayılan alan içeriğini girmeniz gerekir. Ayrıca, alanın isteğe bağlı olup olmayacağını seçmeniz gerekecektir. Eğer böyle bir alan kullanmayacaksanız, bu alanı eklerken yalnızca boş bırakabilirsiniz. Bu durumda modül dahil edilmeyecektir.<br><br>
+Bu alanı haber sayfasında kullanmak istiyorsanız, şablona <b>[xfvalue_X]</b> değişkenini eklemeniz gerekir; burada <b>X</b> - alanın değeri (yeni bir alan eklerken girdiğiniz isimdir). Ayrıca, <b>[xfgiven_X]...[/xfgiven_X]</b> kullanabilirsiniz, bu metin, ek alan ayarlanmışsa aralarındaki metni görüntüler. Ayrıca <b>[xfnotgiven_X]...[/xfnotgiven_X]</b> kullanabilirsiniz, bu da ek alan ayarlanmamışsa aralarındaki metni görüntüler.<br><br>
+Örnek:
+<div class="code">
+<b>1)</b>- Alan adı: stit<br>
+&nbsp;&nbsp;- Açıklama: Bilgi Kaynağı<br>
+&nbsp;&nbsp;- Varsayılan Değer: Ben<br>
+&nbsp;&nbsp;- İsteğe Bağlı: evet<br>
+<b>2)</b>- Alan adı: source<br>
+&nbsp;&nbsp;- Açıklama: Bilgi Kaynağına Bağlantı<br>
+&nbsp;&nbsp;- Varsayılan Değer: http://server.com/<br>
+&nbsp;&nbsp;- İsteğe Bağlı: evet<br><br>
+[xfgiven_source]Kaynak - &lt;a href=[xfvalue_source] target=_blank&gt;[xfvalue_stit]&lt;/a&gt;.[/xfgiven_source]<br>
+[xfnotgiven_source]Kaynak Belirtilmedi[/xfnotgiven_source]</div>
+Eğer bu alan yayın sırasında ayarlanmışsa, aşağıdaki HTML kodu sonuç olarak gösterilecektir:
+<div class="code">Kaynak - &lt;a href=http://server.com/ target=_blank&gt;Ben&lt;/a&gt;.</div>
+Eğer bu alan yayın sırasında ayarlanmamışsa, aşağıdaki gösterilecektir:
+<div class="code"> Kaynak Belirtilmedi </div>
+Unutmayın, alan adı için yalnızca Latin harfleri ve sayılar kullanılabilir.
+HTML;
+
+$help_sections['title']['xprofile'] = "Kullanıcı Profillerindeki Ekstra Alanlar";
+$help_sections['body']['xprofile'] = <<<HTML
+Bu fonksiyon, mevcut alanlara ek olarak kullanıcı profilinde yeni alanlar eklemek için kullanılır.<br><br>
+Yeni bir alan eklemek için "Alan Ekle" butonuna tıklayın. Sonraki sayfada, alan için benzersiz bir ad ve alan açıklaması girmeniz gerekir. Ayrıca, kullanıcının kayıt sırasında ek bilgi eklemesine izin verip vermediğinizi, alanın tamamen kişisel olup olmadığını ve kullanıcının bu alanın içeriğini düzenleyip düzenleyemeyeceğini seçmeniz gerekir.<br><br>
+Ekstra alanlar, yorumları ve kullanıcı profillerini görüntülerken kullanılabilir. Şablonlarınıza [xfvalue_X] eklemeniz gerekir; burada X – alanın değeri (yeni bir alan eklerken girdiğiniz isimdir). Ayrıca [xfgiven_X]...[/xfgiven_X] kullanabilirsiniz.<br><br>
+Örnek:
+<div class="code">
+&nbsp;&nbsp;- Alan adı: city<br>
+&nbsp;&nbsp;- Açıklama: Şehir<br>
+&nbsp;&nbsp;- Alan Türü: Tek Satır<br>
+&nbsp;&nbsp;- Kayıt Sayfasına Ekle: evet<br>
+&nbsp;&nbsp;- Kullanıcı Değiştirebilir: evet<br>
+&nbsp;&nbsp;- Bu Alanı Kişisel Yap: hayır<br><br>
+comments.tpl ve userinfo.tpl içinde aşağıdakileri eklemeniz gerekir:<br>
+[xfgiven_city] Şehir: [xfvalue_city] [/xfgiven_city]</div>
+Eğer kullanıcı profilinde herhangi bir şehir eklerse, örneğin "Moskova", sonuç olarak aşağıdaki HTML kodu görünecektir:
+<div class="code">Şehir: Moskova</div>
+Unutmayın, alan başlığı için yalnızca Latin harfleri ve sayılar kullanılabilir.
+HTML;
+
+$help_sections['title']['banners'] = "Reklam Yönetimi";
+$help_sections['body']['banners'] = <<<HTML
+Bu modül, reklam materyallerinizi bu sitede hızlı ve kolay bir şekilde yerleştirip yönetmek için tasarlanmıştır. Reklamınızı sitede yerleştirmek için yalnızca banner etiketini şablona eklemeniz yeterlidir. Sonrasında, banner kodunu Yönetim Paneli üzerinden değiştirip düzenleyebilirsiniz, şablonlarla uğraşmanıza gerek yok.<br /><br />
+Reklamınızı ekledikten sonra, banner etiketini <b>main.tpl</b> veya <b>fullstory.tpl</b> şablonlarına ekleyebilirsiniz. Eğer reklamı makale açıklamalarının arasına yerleştirmek istiyorsanız, bu etiketi eklemenize gerek yoktur. Otomatik olarak yerleştirilecektir.
+<br />Örnek:
+<div class="code">
+&nbsp;&nbsp;- Başlık: header<br>
+&nbsp;&nbsp;- Açıklama: Üst Banner<br>
+&nbsp;&nbsp;- Banner gösterimi etkin: Evet<br>
+&nbsp;&nbsp;- Sadece Ana Sayfada Göster: Hayır<br>
+&nbsp;&nbsp;- Sabit Konum: Hayır<br>
+&nbsp;&nbsp;- Kısa makaleler arasında göster: Hayır<br><br>
+Sonrasında banner etiketinizi <b>{banner_header}</b> <b>main.tpl</b> veya <b>fullstory.tpl</b> şablonuna ekleyebilirsiniz. <br />
+</div>
+Banner kodunu eklerken HTML ve JavaScript kullanabilirsiniz.	
+HTML;
+
+$help_sections['title']['date'] = "Yerel zaman ve tarih formatı";
+$help_sections['body']['date'] = <<<HTML
+Aşağıdaki semboller format dizesinde tanınabilir: 
+<ul>
+<li><b>a</b> - "am" veya "pm"</li>
+<li><b>A</b> - "AM" veya "PM"</li>
+<li><b>B</b> - Swatch İnternet zamanı </li>
+<li><b>d</b> - ayın günü, gerektiğinde başta sıfır olacak şekilde 2 haneli; "01" ile "31" arasında</li>
+<li><b>D</b> - haftanın günü, alfabetik, 3 harf; örneğin "Cuma"</li>
+<li><b>F</b> - ay, alfabetik, uzun; örneğin "Ocak"</li>
+<li><b>g</b> - saat, 12 saatlik formatta sıfır olmadan; "1" ile "12" arasında</li>
+<li><b>G</b> - saat, 24 saatlik formatta sıfır olmadan; "1" ile "23" arasında</li>
+<li><b>h</b> - saat, 12 saatlik formatta; "01" ile "12" arasında </li>
+<li><b>H</b> - saat, 24 saatlik formatta; "00" ile "23" arasında </li>
+<li><b>i</b> - dakika; "00" ile "59" arasında</li>
+<li><b>I</b> (büyük harf 'i') -  yaz saati uygulaması</li>
+<li><b>j</b> - ayın günü, sıfır olmadan, "1" ile "31" arasında</li>
+<li><b>l</b> - haftanın günü, tam; örneğin "Pazar"</li>
+<li><b>L</b> - leap year (artık yıl); "1" veya "0"</li>
+<li><b>m</b> - ay; "01" ile "12" arasında</li>
+<li><b>M</b> - ay, alfabetik, 3 harf; örneğin "Oca"</li>
+<li><b>n</b> - ay; "1" ile "12" arasında</li>
+<li><b>o</b> - yıl, 4 haneli (yılın tam sayısı); örneğin "2010"</li>
+<li><b>O</b> - UTC saat farkı; örneğin "+0200"</li>
+<li><b>P</b> - UTC saat farkı; örneğin "+02:00"</li>
+<li><b>r</b> - RFC 2822 tarih formatı</li>
+<li><b>s</b> - saniye; "00" ile "59" arasında</li>
+<li><b>S</b> - ayın günü, sıfır olmadan 3 harfli; örneğin "th"</li>
+<li><b>t</b> - aydaki gün sayısı; "28", "29", "30" veya "31"</li>
+<li><b>U</b> - Unix zaman damgası</li>
+</ul><br><br>
+Bir tarih formatı örneği: "d F, Y H:i" - "01 Ocak, 2025 13:45"
+HTML;
+
+$help_sections['title']['social_auth'] = "Sosyal Ağla Yetkilendirme";
+$help_sections['body']['social_auth'] = <<<HTML
+Bu özellik, kullanıcıların sosyal ağ hesapları (Vkontakte, Odnoklassniki vb.) aracılığıyla siteye giriş yapmasını sağlar. Vkontakte veya Odnoklassniki ile sosyal ağlar üzerinden giriş yapabilmek için modülün etkinleştirilmesi gerekir.<br><br>
+Sosyal ağ yetkilendirme işlemini ayarlamak için Yönetim Paneli'ne gidin ve "Sosyal Ağlar" sekmesine tıklayın. Burada sosyal ağlara erişim sağlamak için gerekli tüm parametreleri ayarlayabilirsiniz.
+HTML;
+
+?>
