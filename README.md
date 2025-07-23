@@ -11,8 +11,15 @@ datalife engine dil güncelleme eklendisi
 
 
 1) * Aşağıda yer alan dosyayı indirin
+  
 https://github.com/mt-mobil-lab/dle-tr-dil/blob/main/dle-tr-dil.zip
 
 2) * Eklenti yükle kısmına gelin
   
 ![Ekran 1](/docs/screen1.png?raw=true)
+
+3) * Eklentiyi yükleyin
+  
+![Ekran 2](/docs/screen2.png?raw=true)
+
+![Ekran 3](/docs/screen3.png?raw=true)
