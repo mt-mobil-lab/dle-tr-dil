@@ -2,11 +2,16 @@
 datalife engine dil güncelleme eklendisi
 
 
+
+
 ## Çeviri Sahipleri
 
 * **MaRZoCHi** DLE 9.7 ve sonrası
 * **Supremacy** DLE 9.6 ve öncesi ( *Çevirileri için teşekkürler..* )
 * ** Sonraki çeviriler çeşitli kaynaklardan derlenerek eklenecektir ** *
+
+
+
 
 
 
@@ -22,4 +27,10 @@ https://github.com/mt-mobil-lab/dle-tr-dil/blob/main/dle-tr-dil.zip
   
 ![Ekran 2](/docs/screen2.png?raw=true)
 
+4) * Eklenti güncellemelerini kontrol edin
+
 ![Ekran 3](/docs/screen3.png?raw=true)
+
+
+
+* Kurulum sonrası `/templates/opensearch.tpl` dosyasını sitenize göre düzeltin
