@@ -2,7 +2,7 @@
 <dleplugin>
 	<name>DLE Türkçe Yama</name>
 	<description>DLE Türkçe Yama</description>
-	<icon>engine/skins/images/dlenettr.png</icon>
+	<icon>engine/skins/images/dle-tr-dil.png</icon>
 	<version>18.0</version>
 	<dleversion>18.0</dleversion>
 	<versioncompare>greater</versioncompare>
